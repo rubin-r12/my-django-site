@@ -1,5 +1,4 @@
 {% extends 'blog/base.html' %}
-
 {% block content %}
 <div class="post">
     {% if post.published_date %}
@@ -7,6 +6,8 @@
             {{ post.published_date }}
         </div>
     {% endif %}
+    <br>
+    <a href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-edit fa-2x fa-spin" style="color: #ff922b;"></i></a>
     <h1>{{ post.title }}</h1>
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
