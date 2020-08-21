@@ -24,6 +24,9 @@ h1, h2, h3, h4 {
 .post h1 a {
     color: black;
 }
-/* .post h1 a:visited {
-    color: purple;
-} */
+.post-form-blog textarea {
+    width: 100%;
+}
+.post-form-blog .btn-primary {
+    float: right;
+}
