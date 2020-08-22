@@ -62,6 +62,7 @@ def post_publish(request, pk):
     post.publish()
     return redirect('post_detail', pk=pk)
 
+@login_required
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method =='POST':
@@ -76,14 +77,16 @@ def add_comment_to_post(request, pk):
         form = CommentForm()
         return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
+@login_required
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
 
+@login_required
 def comment_approve(request, pk):
     # 127.0.0.1:8000/comment/1/approve -->the comment with pk=1 will get approved
     comment = get_object_or_404(Comment, pk=pk)
     comment.approve()
-    return redirect('post_detail', pk =comment.post.pk)
+    return redirect('post_detail', pk=comment.post.pk)
     
