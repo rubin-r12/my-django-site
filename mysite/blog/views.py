@@ -80,3 +80,10 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+
+def comment_approve(request, pk):
+    # 127.0.0.1:8000/comment/1/approve -->the comment with pk=1 will get approved
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.approve()
+    return redirect('post_detail', pk =comment.post.pk)
+    
